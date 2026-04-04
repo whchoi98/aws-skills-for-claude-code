@@ -1,93 +1,55 @@
 # Changelog
 
-🇺🇸 [English](#english) | 🇰🇷 [한국어](#한국어)
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+[![English](https://img.shields.io/badge/lang-English-blue.svg)](#english) [![한국어](https://img.shields.io/badge/lang-한국어-red.svg)](#한국어)
 
 ---
 
 <a id="english"></a>
-## 🇺🇸 English
 
-## [1.0] - 2026-04-04
+# English
+
+All notable changes to this project will be documented in this file.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.0.0] - 2026-04-04
 
 ### Added
-- 27 on-demand Skills for Kiro CLI
-- `install-skills.sh` — one-command global installer (macOS/Linux)
-- `powers.json` agent configuration with `skill://` on-demand loading
-- Bilingual README (English / 한국어)
 
-### Skills — Powers (16)
-- `aws-agentcore` — Bedrock AgentCore agent build/deploy
-- `aws-amplify` — Amplify Gen 2 full-stack app development
-- `aws-healthomics` — HealthOmics bioinformatics workflows
-- `aws-iac` — CDK + CloudFormation IaC
-- `aws-sam` — SAM serverless app development
-- `cloud-architect` — AWS Well-Architected CDK Python
-- `cloudwatch-appsignals` — CloudWatch Application Signals APM
-- `saas-builder` — Multi-tenant SaaS app building
-- `strands` — Strands SDK AI agent building
-- `datadog` — Datadog observability
-- `dynatrace` — Dynatrace DQL/Davis AI
-- `figma` — Figma design-to-code
-- `neon` — Neon serverless Postgres
-- `postman` — Postman API testing
-- `stripe` — Stripe payment integration
-- `terraform` — Terraform IaC
+- 27 on-demand skills for Kiro CLI with YAML frontmatter for keyword-triggered activation
+- `install-skills.sh` global installer for macOS and Linux with no external dependencies
+- `powers.json` agent configuration with `skill://` on-demand resource loading
+- Bilingual README and CHANGELOG (English / Korean)
+- 16 skills from [kirodotdev/powers](https://github.com/kirodotdev/powers): aws-agentcore, aws-amplify, aws-healthomics, aws-iac, aws-sam, cloud-architect, cloudwatch-appsignals, saas-builder, strands, datadog, dynatrace, figma, neon, postman, stripe, terraform
+- 11 skills from [whchoi98/mcp-tool-forge](https://github.com/whchoi98/mcp-tool-forge): aws-cloudwatch, aws-cost, aws-data, aws-iam, aws-infra, aws-messaging, aws-security, code-review, refactor, release, sync-docs
 
-### Skills — MCP Tool Forge (11)
-- `aws-cloudwatch` — CloudWatch logs, metrics, alarms, CloudTrail
-- `aws-cost` — Cost analysis, forecasting, pricing lookup
-- `aws-data` — DynamoDB, Aurora, Redshift, ElastiCache, Neptune
-- `aws-iam` — IAM users, roles, policy management
-- `aws-infra` — CloudFormation, ECS, EKS, Serverless
-- `aws-messaging` — SNS, SQS, MQ, Step Functions
-- `aws-security` — Security audit, account info
-- `code-review` — Code review (quality, security, performance)
-- `refactor` — Refactoring (SRP, DRY)
-- `release` — Release automation (semver, CHANGELOG)
-- `sync-docs` — Documentation sync
+[Unreleased]: https://github.com/whchoi98/kiro-cli-power/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/whchoi98/kiro-cli-power/releases/tag/v1.0.0
 
 ---
 
 <a id="한국어"></a>
-## 🇰🇷 한국어
 
-## [1.0] - 2026-04-04
+# 한국어
 
-### 추가
-- Kiro CLI용 27개 온디맨드 Skills
-- `install-skills.sh` — 원커맨드 글로벌 설치 스크립트 (macOS/Linux)
-- `powers.json` 에이전트 설정 (`skill://` 온디맨드 로딩)
-- 이중 언어 README (English / 한국어)
+이 프로젝트의 모든 주요 변경 사항은 이 파일에 기록됩니다.
+이 문서는 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)를 기반으로 하며,
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html)을 따릅니다.
 
-### Skills — Powers (16개)
-- `aws-agentcore` — Bedrock AgentCore 에이전트 빌드/배포
-- `aws-amplify` — Amplify Gen 2 풀스택 앱 개발
-- `aws-healthomics` — HealthOmics 생물정보학 워크플로우
-- `aws-iac` — CDK + CloudFormation IaC
-- `aws-sam` — SAM 서버리스 앱 개발
-- `cloud-architect` — AWS Well-Architected CDK Python
-- `cloudwatch-appsignals` — CloudWatch Application Signals APM
-- `saas-builder` — 멀티테넌트 SaaS 앱 구축
-- `strands` — Strands SDK AI 에이전트 빌드
-- `datadog` — Datadog 옵저버빌리티
-- `dynatrace` — Dynatrace DQL/Davis AI
-- `figma` — Figma 디자인→코드
-- `neon` — Neon 서버리스 Postgres
-- `postman` — Postman API 테스트
-- `stripe` — Stripe 결제 연동
-- `terraform` — Terraform IaC
+## [Unreleased]
 
-### Skills — MCP Tool Forge (11개)
-- `aws-cloudwatch` — CloudWatch 로그, 메트릭, 알람, CloudTrail
-- `aws-cost` — 비용 분석, 예측, 요금 조회
-- `aws-data` — DynamoDB, Aurora, Redshift, ElastiCache, Neptune
-- `aws-iam` — IAM 사용자, 역할, 정책 관리
-- `aws-infra` — CloudFormation, ECS, EKS, Serverless
-- `aws-messaging` — SNS, SQS, MQ, Step Functions
-- `aws-security` — 보안 감사, 계정 정보
-- `code-review` — 코드 리뷰 (품질, 보안, 성능)
-- `refactor` — 리팩토링 (SRP, DRY)
-- `release` — 릴리스 자동화 (semver, CHANGELOG)
-- `sync-docs` — 문서 동기화
+## [1.0.0] - 2026-04-04
+
+### Added
+
+- YAML frontmatter 기반 키워드 활성화를 지원하는 Kiro CLI용 27개 온디맨드 스킬
+- macOS와 Linux를 지원하는 `install-skills.sh` 글로벌 설치 스크립트 (외부 의존성 없음)
+- `skill://` 온디맨드 리소스 로딩을 포함한 `powers.json` 에이전트 설정
+- 이중 언어 README 및 CHANGELOG (영어 / 한국어)
+- [kirodotdev/powers](https://github.com/kirodotdev/powers) 기반 16개 스킬: aws-agentcore, aws-amplify, aws-healthomics, aws-iac, aws-sam, cloud-architect, cloudwatch-appsignals, saas-builder, strands, datadog, dynatrace, figma, neon, postman, stripe, terraform
+- [whchoi98/mcp-tool-forge](https://github.com/whchoi98/mcp-tool-forge) 기반 11개 스킬: aws-cloudwatch, aws-cost, aws-data, aws-iam, aws-infra, aws-messaging, aws-security, code-review, refactor, release, sync-docs
+
+[Unreleased]: https://github.com/whchoi98/kiro-cli-power/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/whchoi98/kiro-cli-power/releases/tag/v1.0.0
