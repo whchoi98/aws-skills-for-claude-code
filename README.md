@@ -4,7 +4,7 @@
 [![Version](https://img.shields.io/badge/version-1.0-green.svg)](CHANGELOG.md)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey.svg)]()
 
-27 on-demand skills for Kiro CLI — curated from Powers and MCP Tool Forge.
+36 on-demand skills for Kiro CLI — curated from Powers and MCP Tool Forge.
 
 [![English](https://img.shields.io/badge/lang-English-blue.svg)](#english) [![한국어](https://img.shields.io/badge/lang-한국어-red.svg)](#한국어)
 
@@ -19,13 +19,13 @@
 Kiro CLI Power Skills packages 27 specialized AI agent skills into a single installer for [Kiro CLI](https://kiro.dev/cli/). Each skill loads on-demand via `skill://` URI — only metadata is kept in memory until relevant keywords appear in conversation, keeping context usage minimal.
 
 Skills are sourced from two repositories:
-- [kirodotdev/powers](https://github.com/kirodotdev/powers) — official Kiro Powers (16 skills)
+- [kirodotdev/powers](https://github.com/kirodotdev/powers) — official Kiro Powers (25 skills)
 - [whchoi98/mcp-tool-forge](https://github.com/whchoi98/mcp-tool-forge) — AWS MCP server-based skills (11 skills)
 
 ## Features
 
 - **On-demand loading** — YAML frontmatter enables keyword-triggered activation, not always-on context
-- **27 skills** — AWS services, external services (Stripe, Datadog, Figma, etc.), and dev workflows
+- **36 skills** — AWS services, external services (Stripe, Datadog, Figma, etc.), and dev workflows
 - **One-command install** — single shell script, no external dependencies
 - **Cross-platform** — macOS and Linux support
 - **Customizable** — global install with per-project override capability
@@ -103,6 +103,16 @@ kiro-cli-power/
 | `saas-builder` | Multi-tenant SaaS app building | Powers |
 | `strands` | Strands SDK AI agent building | Powers |
 
+### Migration & Specialized (5)
+
+| Skill | Description | Source |
+|---|---|---|
+| `arm-soc-migration` | Arm SoC migration with architecture-aware analysis | Powers |
+| `aws-graviton-migration` | Graviton (Arm64) compatibility analysis and porting | Powers |
+| `aws-mcp` | Multi-step AWS tasks with docs, APIs, and Agent SOPs | Powers |
+| `aws-observability` | CloudWatch Logs, Metrics, Alarms, APM, CloudTrail | Powers |
+| `gcp-aws-migrate` | 5-phase GCP to AWS migration advisor | Powers |
+
 ### External Services (7)
 
 | Skill | Description | Source |
@@ -114,6 +124,10 @@ kiro-cli-power/
 | `postman` | Postman API testing | Powers |
 | `stripe` | Stripe payment integration | Powers |
 | `terraform` | Terraform IaC | Powers |
+| `checkout` | Checkout.com 결제 처리 API | Powers |
+| `stackgen` | StackGen 멀티클라우드 IaC 관리 | Powers |
+| `checkout` | Checkout.com payment processing APIs | Powers |
+| `stackgen` | StackGen multi-cloud IaC management | Powers |
 
 ### Development Workflows (4)
 
@@ -123,6 +137,8 @@ kiro-cli-power/
 | `refactor` | Refactoring (SRP, DRY) | MCP Tool Forge |
 | `release` | Release automation (semver, CHANGELOG) | MCP Tool Forge |
 | `sync-docs` | Documentation sync | MCP Tool Forge |
+| `spark-troubleshooting` | Spark on EMR, Glue, SageMaker troubleshooting | Powers |
+| `power-builder` | Guide for building new Kiro Powers | Powers |
 
 ## Configuration
 
@@ -169,7 +185,7 @@ Each skill follows its original license. For Powers-based skills, refer to the [
 
 ## Acknowledgements
 
-- [kirodotdev/powers](https://github.com/kirodotdev/powers) — Kiro Powers official repository (16 skills)
+- [kirodotdev/powers](https://github.com/kirodotdev/powers) — Kiro Powers official repository (25 skills)
 - [whchoi98/mcp-tool-forge](https://github.com/whchoi98/mcp-tool-forge) — AWS MCP server-based skills (11 skills)
 - [Kiro](https://kiro.dev/) — AI-powered development environment
 
@@ -181,16 +197,16 @@ Each skill follows its original license. For Powers-based skills, refer to the [
 
 ## 개요
 
-Kiro CLI Power Skills는 [Kiro CLI](https://kiro.dev/cli/)를 위한 27개 전문 AI 에이전트 스킬을 하나의 설치 스크립트로 제공합니다. 각 스킬은 `skill://` URI를 통해 온디맨드로 로드됩니다. 대화에서 관련 키워드가 나타날 때까지 메타데이터만 메모리에 유지하여 컨텍스트 사용을 최소화합니다.
+Kiro CLI Power Skills는 [Kiro CLI](https://kiro.dev/cli/)를 위한 36개 전문 AI 에이전트 스킬을 하나의 설치 스크립트로 제공합니다. 각 스킬은 `skill://` URI를 통해 온디맨드로 로드됩니다. 대화에서 관련 키워드가 나타날 때까지 메타데이터만 메모리에 유지하여 컨텍스트 사용을 최소화합니다.
 
 스킬은 두 리포지토리에서 수집했습니다:
-- [kirodotdev/powers](https://github.com/kirodotdev/powers) — Kiro Powers 공식 리포지토리 (16개 스킬)
+- [kirodotdev/powers](https://github.com/kirodotdev/powers) — Kiro Powers 공식 리포지토리 (25개 스킬)
 - [whchoi98/mcp-tool-forge](https://github.com/whchoi98/mcp-tool-forge) — AWS MCP 서버 기반 스킬 (11개 스킬)
 
 ## 주요 기능
 
 - **온디맨드 로딩** — YAML frontmatter로 키워드 기반 활성화, 항상 로드되지 않음
-- **27개 스킬** — AWS 서비스, 외부 서비스(Stripe, Datadog, Figma 등), 개발 워크플로우
+- **36개 스킬** — AWS 서비스, 외부 서비스(Stripe, Datadog, Figma 등), 개발 워크플로우
 - **원커맨드 설치** — 단일 셸 스크립트, 외부 의존성 없음
 - **크로스 플랫폼** — macOS와 Linux 지원
 - **커스터마이즈 가능** — 글로벌 설치 + 프로젝트별 오버라이드
@@ -241,7 +257,7 @@ kiro-cli-power/
     └── skills/
         ├── aws-agentcore/ # Bedrock AgentCore
         ├── stripe/        # Stripe 결제
-        ├── ...            # (27개 스킬 디렉토리)
+        ├── ...            # (36개 스킬 디렉토리)
         └── terraform/     # Terraform IaC
 ```
 
@@ -268,6 +284,16 @@ kiro-cli-power/
 | `saas-builder` | 멀티테넌트 SaaS 앱 구축 | Powers |
 | `strands` | Strands SDK AI 에이전트 빌드 | Powers |
 
+### 마이그레이션 및 특수 (5개)
+
+| Skill | 설명 | 출처 |
+|---|---|---|
+| `arm-soc-migration` | Arm SoC 마이그레이션 (아키텍처 인식 분석) | Powers |
+| `aws-graviton-migration` | Graviton (Arm64) 호환성 분석 및 포팅 | Powers |
+| `aws-mcp` | AWS 문서, API, Agent SOP 기반 멀티스텝 작업 | Powers |
+| `aws-observability` | CloudWatch 로그, 메트릭, 알람, APM, CloudTrail | Powers |
+| `gcp-aws-migrate` | 5단계 GCP→AWS 마이그레이션 어드바이저 | Powers |
+
 ### 외부 서비스 (7개)
 
 | Skill | 설명 | 출처 |
@@ -279,6 +305,10 @@ kiro-cli-power/
 | `postman` | Postman API 테스트 | Powers |
 | `stripe` | Stripe 결제 연동 | Powers |
 | `terraform` | Terraform IaC | Powers |
+| `checkout` | Checkout.com 결제 처리 API | Powers |
+| `stackgen` | StackGen 멀티클라우드 IaC 관리 | Powers |
+| `checkout` | Checkout.com payment processing APIs | Powers |
+| `stackgen` | StackGen multi-cloud IaC management | Powers |
 
 ### 개발 워크플로우 (4개)
 
@@ -288,6 +318,8 @@ kiro-cli-power/
 | `refactor` | 리팩토링 (SRP, DRY) | MCP Tool Forge |
 | `release` | 릴리스 자동화 (semver, CHANGELOG) | MCP Tool Forge |
 | `sync-docs` | 문서 동기화 | MCP Tool Forge |
+| `spark-troubleshooting` | Spark on EMR, Glue, SageMaker 트러블슈팅 | Powers |
+| `power-builder` | Kiro Power 제작 가이드 | Powers |
 
 ## 환경 설정
 
@@ -334,6 +366,6 @@ kiro-cli-power/
 
 ## 감사의 말
 
-- [kirodotdev/powers](https://github.com/kirodotdev/powers) — Kiro Powers 공식 리포지토리 (16개 스킬)
+- [kirodotdev/powers](https://github.com/kirodotdev/powers) — Kiro Powers 공식 리포지토리 (25개 스킬)
 - [whchoi98/mcp-tool-forge](https://github.com/whchoi98/mcp-tool-forge) — AWS MCP 서버 기반 스킬 (11개 스킬)
 - [Kiro](https://kiro.dev/) — AI 기반 개발 환경

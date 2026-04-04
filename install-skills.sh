@@ -24,6 +24,43 @@ install_skill() {
 }
 
 
+install_skill "arm-soc-migration" << 'EOF'
+---
+name: arm-soc-migration
+description: Guides migration of code between Arm SoCs with architecture-aware analysis and safe migration practices. Use when mentioning Arm SoC, Cortex migration, embedded migration, or Arm architecture porting.
+---
+
+# Arm SoC Migration
+
+## Overview
+Migrate embedded, automotive, or general-purpose applications between Arm SoCs (e.g., Graviton → Raspberry Pi, NXP i.MX8 → NVIDIA Jetson Orin).
+
+## Workflows
+1. Discovery — Scan codebase for platform-specific code, compare architectures
+2. Planning — Migration plan, risk assessment, performance impact analysis
+3. Implementation — Refactor into HAL layers, update build systems
+4. Validation — Cross-compilation, benchmarking, functional tests
+
+## Key Rules
+- Preserve behavior: no silent API or timing changes
+- Isolate SoC-specific code in HAL layers
+- Maintain safety properties and error handling
+- Document all changes
+
+## MCP Server Config (Docker)
+```json
+{
+  "mcpServers": {
+    "arm-mcp-server": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "--pull=always", "armlimited/arm-mcp:latest"],
+      "env": { "FASTMCP_LOG_LEVEL": "ERROR" }
+    }
+  }
+}
+```
+EOF
+
 install_skill "aws-agentcore" << 'EOF'
 ---
 name: aws-agentcore
@@ -522,6 +559,44 @@ s3t.list_tables(tableBucketARN='arn:...', namespace='default')
 | Neptune | `aws neptune describe-db-clusters` | neptune-data `execute_open_cypher_query` |
 EOF
 
+install_skill "aws-graviton-migration" << 'EOF'
+---
+name: aws-graviton-migration
+description: Analyze source code for Graviton (Arm64) compatibility, identify issues, and suggest fixes for language runtimes and dependencies. Use when mentioning Graviton, Arm64 migration, x86 to Arm, or aarch64 porting.
+---
+
+# Graviton Migration
+
+## Overview
+Migrate workloads from x86 to AWS Graviton (Arm64). Scans code for x86-specific dependencies, checks Docker image compatibility, and suggests Arm-compatible alternatives.
+
+## Steps
+1. Check Dockerfiles with check_image/skopeo for Arm compatibility
+2. Verify each package via knowledge_base_search for Arm support
+3. Scan requirements.txt/dependencies line-by-line
+4. Run migrate_ease_scan on codebase (C++, Python, Go, JS, Java)
+5. Generate analysis report with recommendations
+6. Get user confirmation before code changes
+
+## Supported Languages
+C++, Python, Go, JavaScript, Java
+
+## MCP Server Config (Docker)
+```json
+{
+  "mcpServers": {
+    "arm-mcp-server": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "--pull=always", "armswdev/arm-mcp:latest"],
+      "env": { "FASTMCP_LOG_LEVEL": "ERROR" }
+    }
+  }
+}
+```
+
+Requires Docker installed and running.
+EOF
+
 install_skill "aws-healthomics" << 'EOF'
 ---
 name: aws-healthomics
@@ -898,6 +973,46 @@ support.create_case(
 ```
 EOF
 
+install_skill "aws-mcp" << 'EOF'
+---
+name: aws-mcp
+description: Perform complex multi-step AWS tasks with real-time documentation, API execution, and Agent SOPs following AWS best practices. Use when mentioning AWS CLI, AWS API, AWS tasks, or AWS automation.
+---
+
+# Work with AWS
+
+## Key Capabilities
+- Execute 15,000+ AWS APIs with SigV4 authentication
+- Search AWS documentation, best practices, and guides
+- Pre-built Agent SOPs for complex workflows (VPC setup, Lambda deployment, etc.)
+- Regional availability checks
+- Cost management and optimization
+
+## Tools
+- search_documentation / read_documentation / recommend
+- call_aws / suggest_aws_commands
+- retrieve_agent_sop
+- get_regional_availability / list_regions
+
+## MCP Server Config
+```json
+{
+  "mcpServers": {
+    "aws-mcp": {
+      "command": "uvx",
+      "args": ["awslabs.aws-mcp@latest"],
+      "env": {
+        "AWS_PROFILE": "default",
+        "AWS_REGION": "us-east-1"
+      }
+    }
+  }
+}
+```
+
+Requires AWS CLI v2+ and uv installed.
+EOF
+
 install_skill "aws-messaging" << 'EOF'
 ---
 name: aws-messaging
@@ -1031,6 +1146,53 @@ location.calculate_route(
     DeparturePosition=[126.97, 37.55],
     DestinationPosition=[127.02, 37.50]
 )
+```
+EOF
+
+install_skill "aws-observability" << 'EOF'
+---
+name: aws-observability
+description: Comprehensive AWS observability with CloudWatch Logs, Metrics, Alarms, Application Signals APM, CloudTrail auditing, and codebase observability gap analysis. Use when mentioning CloudWatch, observability, monitoring, logs, metrics, alarms, traces, or CloudTrail.
+---
+
+# AWS Observability
+
+## Key Capabilities
+- CloudWatch Logs Insights queries across up to 50 log groups
+- Metrics & Alarms with recommended configurations
+- Application Signals APM with distributed tracing and SLOs
+- CloudTrail security auditing (Lake, CloudWatch Logs, Lookup Events)
+- Codebase observability gap analysis (Python, Java, JS/TS, Go, Ruby, C#)
+
+## MCP Servers
+- awslabs.cloudwatch-mcp-server — Logs, Metrics, Alarms
+- awslabs.cloudwatch-applicationsignals-mcp-server — APM, SLOs, tracing
+- awslabs.cloudtrail-mcp-server — Security auditing
+- awslabs.aws-documentation-mcp-server — AWS docs
+
+## Scenario Routing
+- Incident response / troubleshooting → incident-response workflow
+- Log analysis → log-analysis workflow
+- Alerting setup → alerting-setup workflow
+- Performance monitoring → performance-monitoring workflow
+- Security auditing → security-auditing workflow
+- Observability gaps → observability-gap-analysis workflow
+
+## MCP Server Config
+```json
+{
+  "mcpServers": {
+    "cloudwatch": {
+      "command": "uvx",
+      "args": ["awslabs.cloudwatch-mcp-server@latest"],
+      "env": {
+        "AWS_PROFILE": "default",
+        "AWS_REGION": "us-east-1",
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    }
+  }
+}
 ```
 EOF
 
@@ -1244,6 +1406,46 @@ def security_audit():
             print(f"  Never used role: {r['RoleName']}")
 
 security_audit()
+```
+EOF
+
+install_skill "checkout" << 'EOF'
+---
+name: checkout-payments
+description: Access Checkout.com payment processing APIs - payments, customers, disputes, issuing, workflows, and identity verification. Use when mentioning Checkout.com, payment processing, or Checkout API.
+---
+
+# Checkout.com Global Payments
+
+## Key Tools
+- docssearch — Search API operations by keyword
+- openapilistOperations — List/filter operations by tag
+- openapigetOperation — Get detailed endpoint documentation
+- openapigetSchema — Retrieve request/response schemas
+- markdownsearch — Search implementation guides
+
+## API Coverage
+- Payments: process, refund, capture, void
+- Customers: profiles and payment instruments
+- Disputes: chargeback management
+- Issuing: card issuing and management
+- Platforms: multi-entity and marketplace
+- Workflows: automated business logic
+- Identity Verification: KYC services
+
+## MCP Server Config
+```json
+{
+  "mcpServers": {
+    "checkout": {
+      "command": "npx",
+      "args": ["-y", "@checkout/mcp-server"],
+      "env": {
+        "CKO_SECRET_KEY": "$CKO_SECRET_KEY"
+      }
+    }
+  }
+}
 ```
 EOF
 
@@ -1521,6 +1723,49 @@ description: Connect Figma designs to code components - generate design system r
 ```
 EOF
 
+install_skill "gcp-aws-migrate" << 'EOF'
+---
+name: gcp-aws-migrate
+description: Guided 5-phase migration from Google Cloud Platform to AWS - Terraform discovery, requirements clarification, architecture design, cost estimation, and execution planning. Use when mentioning GCP to AWS migration, cloud migration, or re-platform.
+---
+
+# GCP to AWS Migration Advisor
+
+## 5-Phase Process
+1. Discover — Scan Terraform, app code, billing data for GCP resources
+2. Clarify — Gather user requirements and preferences
+3. Design — Map GCP services to AWS equivalents (re-platform by default)
+4. Estimate — Cost comparison (cached pricing + AWS Pricing API)
+5. Generate — Terraform configs, migration scripts, documentation
+
+## Inputs (at least one required)
+- Terraform .tf files
+- Application source code with GCP SDK imports
+- GCP billing/cost export (CSV or JSON)
+
+## Defaults
+- Re-platform approach (Cloud Run → Fargate, Cloud SQL → RDS)
+- Dev sizing unless specified
+- Region: us-east-1
+- Timeline: 8-12 weeks
+
+## MCP Server Config
+```json
+{
+  "mcpServers": {
+    "awspricing": {
+      "command": "uvx",
+      "args": ["awslabs.aws-pricing-mcp-server@latest"],
+      "env": {
+        "AWS_PROFILE": "default",
+        "AWS_REGION": "us-east-1"
+      }
+    }
+  }
+}
+```
+EOF
+
 install_skill "neon" << 'EOF'
 ---
 name: neon-database
@@ -1636,6 +1881,47 @@ description: Automate API testing and collection management with Postman - creat
 Change URL to `https://mcp.postman.com/full` for 112 tools.
 EOF
 
+install_skill "power-builder" << 'EOF'
+---
+name: power-builder
+description: Complete guide for building and testing new Kiro Powers with templates, best practices, and validation. Use when mentioning power builder, create power, build power, or Kiro power development.
+---
+
+# Power Builder
+
+## Overview
+Guide for building Kiro Powers. Two types:
+- **Guided MCP Power** — MCP server config + documentation (has mcp.json)
+- **Knowledge Base Power** — Pure documentation (no mcp.json)
+
+## Power Structure
+```
+my-power/
+├── POWER.md       # Required: metadata + documentation
+├── mcp.json       # Required for Guided MCP Powers only
+└── steering/      # Optional: workflow guides
+```
+
+## POWER.md Frontmatter (5 fields only)
+```yaml
+---
+name: "power-name"
+displayName: "Human Readable Name"
+description: "Clear description (max 3 sentences)"
+keywords: ["keyword1", "keyword2"]
+author: "Your Name"
+---
+```
+
+## Best Practices
+- Default to single power (only split with strong conviction)
+- Use kebab-case for power names
+- Include 5-7 keywords
+- Document exact MCP tool names
+- Create steering/ only when POWER.md >500 lines
+- No MCP server needed for Knowledge Base Powers
+EOF
+
 install_skill "refactor" << 'EOF'
 ---
 name: refactor
@@ -1736,6 +2022,70 @@ description: Build production-ready multi-tenant SaaS applications with serverle
 - fetch, stripe, aws-knowledge-mcp-server
 - awslabs.dynamodb-mcp-server, awslabs.aws-serverless-mcp
 - playwright (disabled by default)
+EOF
+
+install_skill "spark-troubleshooting" << 'EOF'
+---
+name: spark-troubleshooting
+description: Troubleshoot Spark applications on AWS EMR, Glue, and SageMaker - analyze failures, identify bottlenecks, get code recommendations. Use when mentioning Spark, EMR, PySpark, Glue Spark, or Spark troubleshooting.
+---
+
+# Spark Troubleshooting Agent
+
+## Key Capabilities
+- Failure analysis for PySpark and Scala jobs
+- Root cause identification via telemetry correlation
+- Performance diagnostics and bottleneck detection
+- Code recommendations and optimizations
+- Supports EMR EC2, EMR Serverless, Glue, SageMaker
+
+## MCP Servers
+- sagemaker-unified-studio-mcp-troubleshooting — Failure analysis
+- sagemaker-unified-studio-mcp-code-rec — Code recommendations
+
+## Best Practices
+- Provide specific identifiers (cluster ID, application ID, job ID)
+- Describe symptoms clearly (observed vs expected)
+- Include exact error messages
+- Specify platform (EMR EC2, EMR Serverless, Glue, SageMaker)
+
+## Setup
+Requires CloudFormation stack deployment for IAM role. See AWS docs for setup.
+EOF
+
+install_skill "stackgen" << 'EOF'
+---
+name: stackgen-iac
+description: Design, manage, and deploy cloud infrastructure with StackGen - create appstacks, manage resources, configure environments, and push IaC to Git. Use when mentioning StackGen, appstack, or multi-cloud IaC.
+---
+
+# StackGen Infrastructure as Code
+
+## Key Tools
+- Appstack: get_appstacks, create_appstack, copy_topology, get_appstack_resources
+- Resources: add_resource_to_appstack, update_resource, delete_resource, connect_resources
+- Environments: get_env_profiles, create_env_profile, update_env_profile
+- Git: list_git_configuration, add_git_configuration, push_appstack_to_git
+- Policy: get_policies, get_current_violations
+
+## Workflow
+1. create_appstack (AWS, Azure, or GCP)
+2. add_resource_to_appstack
+3. connect_resources (dependencies)
+4. create_env_profile (dev/staging/prod)
+5. push_appstack_to_git
+
+## MCP Server Config
+```json
+{
+  "mcpServers": {
+    "stackgen": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.stackgen.com/mcp"]
+    }
+  }
+}
+```
 EOF
 
 install_skill "strands" << 'EOF'
