@@ -1,5 +1,4 @@
 ---
-name: aws-sam-serverless
 description: Build serverless applications with AWS SAM - init, build, deploy, local invoke, and logs. Use when mentioning SAM, serverless, Lambda deployment, or AWS serverless application model.
 ---
 

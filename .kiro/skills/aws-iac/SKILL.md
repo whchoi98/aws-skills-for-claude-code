@@ -1,5 +1,4 @@
 ---
-name: aws-infrastructure-as-code
 description: Build well-architected AWS infrastructure with CDK and CloudFormation - latest documentation, validation, compliance, and troubleshooting. Use when mentioning CDK, CloudFormation, cfn-lint, cfn-guard, or AWS IaC.
 ---
 

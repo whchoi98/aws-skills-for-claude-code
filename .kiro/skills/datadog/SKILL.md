@@ -1,5 +1,4 @@
 ---
-name: datadog-observability
 description: Query logs, metrics, traces, RUM events, incidents, and monitors from Datadog for production debugging and performance analysis. Use when mentioning Datadog, APM traces, RUM, or Datadog monitoring.
 ---
 

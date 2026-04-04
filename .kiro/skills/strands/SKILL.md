@@ -1,5 +1,4 @@
 ---
-name: strands-agents-sdk
 description: Build AI agents with Strands SDK using Bedrock, Anthropic, OpenAI, Gemini, or Llama models. Use when mentioning Strands SDK, AI agent building, or multi-provider LLM agents.
 ---
 

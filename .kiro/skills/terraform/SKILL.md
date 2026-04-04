@@ -1,5 +1,4 @@
 ---
-name: terraform-iac
 description: Build and manage Infrastructure as Code with Terraform - search registry providers, modules, policies, and HCP Terraform workspace management. Use when mentioning Terraform, HCL, HCP, or Terraform registry.
 ---
 

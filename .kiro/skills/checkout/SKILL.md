@@ -1,5 +1,4 @@
 ---
-name: checkout-payments
 description: Access Checkout.com payment processing APIs - payments, customers, disputes, issuing, workflows, and identity verification. Use when mentioning Checkout.com, payment processing, or Checkout API.
 ---
 

@@ -1,5 +1,4 @@
 ---
-name: dynatrace-observability
 description: Query logs, metrics, traces, problems, and Kubernetes events from Dynatrace using DQL. Use when mentioning Dynatrace, DQL, Davis AI, or Dynatrace monitoring.
 ---
 

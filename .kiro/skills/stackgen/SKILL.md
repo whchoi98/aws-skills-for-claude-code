@@ -1,5 +1,4 @@
 ---
-name: stackgen-iac
 description: Design, manage, and deploy cloud infrastructure with StackGen - create appstacks, manage resources, configure environments, and push IaC to Git. Use when mentioning StackGen, appstack, or multi-cloud IaC.
 ---
 

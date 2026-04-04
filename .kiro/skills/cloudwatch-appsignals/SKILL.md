@@ -1,5 +1,4 @@
 ---
-name: cloudwatch-application-signals
 description: Monitor service health, analyze SLO compliance, and perform root cause analysis with CloudWatch Application Signals. Use when mentioning Application Signals, SLO monitoring, APM on AWS, or CloudWatch traces.
 ---
 

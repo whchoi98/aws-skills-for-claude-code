@@ -1,5 +1,4 @@
 ---
-name: postman-api-testing
 description: Automate API testing and collection management with Postman - create workspaces, collections, environments, and run tests. Use when mentioning Postman, API testing, API collections, or API automation.
 ---
 

@@ -1,5 +1,4 @@
 ---
-name: figma-design-to-code
 description: Connect Figma designs to code components - generate design system rules, map UI components to Figma designs, maintain design-code consistency. Use when mentioning Figma, design to code, UI mockup, or design system.
 ---
 

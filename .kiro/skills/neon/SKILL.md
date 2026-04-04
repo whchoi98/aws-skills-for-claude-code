@@ -1,5 +1,4 @@
 ---
-name: neon-database
 description: Serverless Postgres with database branching, autoscaling, and scale-to-zero via Neon. Use when mentioning Neon, Postgres database branching, serverless database, or PostgreSQL with branching.
 ---
 

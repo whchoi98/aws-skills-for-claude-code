@@ -1,5 +1,4 @@
 ---
-name: stripe-payments
 description: Build payment integrations with Stripe - Checkout Sessions, Payment Intents, subscriptions, billing, refunds. Use when mentioning payments, checkout, subscriptions, billing, invoices, or Stripe.
 ---
 
