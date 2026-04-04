@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Claude Code Global Skills Installer
-# Converts kiro-cli-power skills to ~/.claude/skills/ for on-demand loading
+# Converts aws-skills-for-claude-code skills to ~/.claude/skills/ for on-demand loading
 # Works on macOS and Linux
 # Usage: bash install-claude-code.sh
 
@@ -12,7 +12,7 @@ CLAUDE_SKILLS_DIR="${HOME}/.claude/skills"
 
 if [ ! -d "${KIRO_SKILLS_DIR}" ]; then
   echo "Error: Source skills not found at ${KIRO_SKILLS_DIR}"
-  echo "Run this script from the kiro-cli-power project root."
+  echo "Run this script from the aws-skills-for-claude-code project root."
   exit 1
 fi
 
