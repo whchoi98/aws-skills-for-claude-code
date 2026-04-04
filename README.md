@@ -1,12 +1,12 @@
 # Kiro CLI Power Skills
 
-[![License](https://img.shields.io/badge/license-See%20each%20skill-blue)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0-green)](CHANGELOG.md)
-[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey)]()
+[![License](https://img.shields.io/badge/license-See%20each%20skill-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0-green.svg)](CHANGELOG.md)
+[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey.svg)]()
 
 27 on-demand skills for Kiro CLI — curated from Powers and MCP Tool Forge.
 
-🇺🇸 [English](#english) | 🇰🇷 [한국어](#한국어)
+[![English](https://img.shields.io/badge/lang-English-blue.svg)](#english) [![한국어](https://img.shields.io/badge/lang-한국어-red.svg)](#한국어)
 
 ---
 
