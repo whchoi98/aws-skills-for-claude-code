@@ -1,0 +1,7 @@
+{
+  "name": "powers",
+  "description": "Agent with all kirodotdev/powers skills loaded on-demand",
+  "resources": [
+    "skill://.kiro/skills/**/SKILL.md"
+  ]
+}
