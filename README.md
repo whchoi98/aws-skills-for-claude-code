@@ -1,6 +1,6 @@
 # AWS Skills for Claude Code
 
-[![License](https://img.shields.io/badge/license-See%20each%20skill-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.2.0-green.svg)](CHANGELOG.md)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey.svg)]()
 
@@ -70,12 +70,23 @@ aws-skills-for-claude-code/
 ├── README.md                  # Documentation (bilingual)
 ├── CHANGELOG.md               # Version history
 ├── install-claude-code.sh     # Claude Code installer (macOS/Linux)
-└── .kiro/
-    └── skills/
-        ├── aws-agentcore/     # Bedrock AgentCore
-        ├── stripe/            # Stripe payments
-        ├── ...                # (36 skill directories)
-        └── terraform/         # Terraform IaC
+├── install-skills.sh          # Upstream skill downloader
+├── .kiro/
+│   ├── skills/                # 36 skill originals (upstream archive)
+│   └── agents/                # Kiro agent configuration
+├── .claude/
+│   ├── hooks/                 # Claude Code hooks (doc-sync, secret-scan, etc.)
+│   ├── skills/                # Project skills (code-review, refactor, etc.)
+│   ├── commands/              # Slash commands (/review, /test-all, /deploy)
+│   └── agents/                # Agent definitions (code-reviewer, security-auditor)
+├── docs/
+│   ├── architecture.md        # Bilingual architecture document
+│   ├── onboarding.md          # Developer onboarding guide
+│   ├── decisions/             # Architecture Decision Records
+│   └── runbooks/              # Operational runbooks
+└── scripts/
+    ├── setup.sh               # One-command project setup
+    └── install-hooks.sh       # Git hooks installer
 ```
 
 ### Installation Result
@@ -256,12 +267,23 @@ aws-skills-for-claude-code/
 ├── README.md                  # 문서 (이중 언어)
 ├── CHANGELOG.md               # 버전 이력
 ├── install-claude-code.sh     # Claude Code 설치 스크립트 (macOS/Linux)
-└── .kiro/
-    └── skills/
-        ├── aws-agentcore/     # Bedrock AgentCore
-        ├── stripe/            # Stripe 결제
-        ├── ...                # (36개 스킬 디렉토리)
-        └── terraform/         # Terraform IaC
+├── install-skills.sh          # 업스트림 스킬 다운로더
+├── .kiro/
+│   ├── skills/                # 36개 스킬 원본 (업스트림 아카이브)
+│   └── agents/                # Kiro 에이전트 설정
+├── .claude/
+│   ├── hooks/                 # Claude Code 훅 (doc-sync, secret-scan 등)
+│   ├── skills/                # 프로젝트 스킬 (code-review, refactor 등)
+│   ├── commands/              # 슬래시 커맨드 (/review, /test-all, /deploy)
+│   └── agents/                # 에이전트 정의 (code-reviewer, security-auditor)
+├── docs/
+│   ├── architecture.md        # 이중 언어 아키텍처 문서
+│   ├── onboarding.md          # 개발자 온보딩 가이드
+│   ├── decisions/             # 아키텍처 결정 기록 (ADR)
+│   └── runbooks/              # 운영 런북
+└── scripts/
+    ├── setup.sh               # 원커맨드 프로젝트 셋업
+    └── install-hooks.sh       # Git 훅 설치
 ```
 
 ### 설치 결과

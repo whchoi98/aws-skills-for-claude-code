@@ -1,0 +1,5 @@
+name: code-reviewer
+description: Review code changes for bugs, security issues, and guideline violations with confidence-based filtering. Reports only high-confidence issues (75+).
+tools: Read, Glob, Grep, Bash(git diff:*), Bash(git log:*)
+model: sonnet
+color: green

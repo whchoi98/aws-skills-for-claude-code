@@ -11,3 +11,10 @@ Thumbs.db
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# Environment
+.env
+.env.local
+
+# MCP config (may contain secrets)
+# .mcp.json
