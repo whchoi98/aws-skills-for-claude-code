@@ -30,6 +30,9 @@ ls ~/.claude/skills/
 
 # Count installed skills (should be 36)
 ls -d ~/.claude/skills/*/ | wc -l
+
+# Run test suite (should output 76 passed, 0 failed)
+bash tests/run-all.sh
 ```
 
 ## Project Overview

@@ -163,6 +163,11 @@ aws-skills-for-claude-code/
 │   ├── onboarding.md          # Developer onboarding guide
 │   ├── decisions/             # Architecture Decision Records (ADR)
 │   └── runbooks/              # Operational runbooks
+├── tests/
+│   ├── run-all.sh             # TAP-format test runner (76 assertions)
+│   ├── hooks/                 # Hook and secret pattern tests
+│   ├── structure/             # Project structure validation
+│   └── fixtures/              # Test data (secret samples)
 └── scripts/
     ├── setup.sh               # One-command project setup
     └── install-hooks.sh       # Git hooks installer
@@ -362,6 +367,11 @@ aws-skills-for-claude-code/
 │   ├── onboarding.md          # 개발자 온보딩 가이드
 │   ├── decisions/             # 아키텍처 결정 기록 (ADR)
 │   └── runbooks/              # 운영 런북
+├── tests/
+│   ├── run-all.sh             # TAP 형식 테스트 러너 (76개 어설션)
+│   ├── hooks/                 # 훅 및 시크릿 패턴 테스트
+│   ├── structure/             # 프로젝트 구조 검증
+│   └── fixtures/              # 테스트 데이터 (시크릿 샘플)
 └── scripts/
     ├── setup.sh               # 원커맨드 프로젝트 셋업
     └── install-hooks.sh       # Git 훅 설치
