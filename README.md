@@ -33,12 +33,16 @@ The plugin includes 36 upstream skills from two repositories plus 4 development 
 
 ### Option A: Marketplace Install (Recommended)
 
+From **shell**:
 ```bash
-# Add the marketplace
 claude plugin marketplace add https://github.com/whchoi98/aws-skills-for-claude-code
-
-# Install the plugin
 claude plugin install aws-skills-for-claude-code@aws-skills-for-claude-code
+```
+
+From **Claude Code** session:
+```
+/plugin marketplace add https://github.com/whchoi98/aws-skills-for-claude-code
+/plugin install aws-skills-for-claude-code@aws-skills-for-claude-code
 ```
 
 This activates **36 skills**, **3 slash commands** (`/review`, `/test-all`, `/deploy`), **2 agents** (code-reviewer, security-auditor), and **security hooks** automatically.
@@ -64,12 +68,19 @@ Copies 36 upstream skills to `~/.claude/skills/`. Does not include commands, age
 
 ### Update
 
+From **shell**:
 ```bash
 claude plugin marketplace update aws-skills-for-claude-code
 ```
 
+From **Claude Code** session:
+```
+/plugin marketplace update aws-skills-for-claude-code
+```
+
 ### Uninstall
 
+From **shell**:
 ```bash
 # Remove the plugin
 claude plugin uninstall aws-skills-for-claude-code
@@ -78,14 +89,24 @@ claude plugin uninstall aws-skills-for-claude-code
 claude plugin marketplace remove aws-skills-for-claude-code
 ```
 
+From **Claude Code** session:
+```
+/plugin uninstall aws-skills-for-claude-code
+/plugin marketplace remove aws-skills-for-claude-code
+```
+
 ### Verify Installation
 
+From **shell**:
 ```bash
-# List installed plugins
 claude plugin list
-
-# List configured marketplaces
 claude plugin marketplace list
+```
+
+From **Claude Code** session:
+```
+/plugin list
+/plugin marketplace list
 ```
 
 ## Usage
@@ -288,12 +309,16 @@ AWS Skills for Claude Code는 [Claude Code](https://docs.anthropic.com/en/docs/c
 
 ### 옵션 A: 마켓플레이스 설치 (권장)
 
+**쉘**에서:
 ```bash
-# 마켓플레이스 추가
 claude plugin marketplace add https://github.com/whchoi98/aws-skills-for-claude-code
-
-# 플러그인 설치
 claude plugin install aws-skills-for-claude-code@aws-skills-for-claude-code
+```
+
+**Claude Code** 세션에서:
+```
+/plugin marketplace add https://github.com/whchoi98/aws-skills-for-claude-code
+/plugin install aws-skills-for-claude-code@aws-skills-for-claude-code
 ```
 
 **36개 스킬**, **3개 슬래시 커맨드** (`/review`, `/test-all`, `/deploy`), **2개 에이전트** (code-reviewer, security-auditor), **보안 훅**이 자동 활성화됩니다.
@@ -319,12 +344,19 @@ bash install-claude-code.sh
 
 ### 업데이트
 
+**쉘**에서:
 ```bash
 claude plugin marketplace update aws-skills-for-claude-code
 ```
 
+**Claude Code** 세션에서:
+```
+/plugin marketplace update aws-skills-for-claude-code
+```
+
 ### 삭제
 
+**쉘**에서:
 ```bash
 # 플러그인 삭제
 claude plugin uninstall aws-skills-for-claude-code
@@ -333,14 +365,24 @@ claude plugin uninstall aws-skills-for-claude-code
 claude plugin marketplace remove aws-skills-for-claude-code
 ```
 
+**Claude Code** 세션에서:
+```
+/plugin uninstall aws-skills-for-claude-code
+/plugin marketplace remove aws-skills-for-claude-code
+```
+
 ### 설치 확인
 
+**쉘**에서:
 ```bash
-# 설치된 플러그인 목록
 claude plugin list
-
-# 등록된 마켓플레이스 목록
 claude plugin marketplace list
+```
+
+**Claude Code** 세션에서:
+```
+/plugin list
+/plugin marketplace list
 ```
 
 ## 사용법
