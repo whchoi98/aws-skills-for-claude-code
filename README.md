@@ -31,29 +31,36 @@ The plugin includes 36 upstream skills from two repositories plus 4 development 
 
 ## Installation
 
-### As a Plugin (Recommended)
+### Option A: Marketplace Install (Recommended)
 
 ```bash
-# Clone and install as Claude Code plugin
+# Add the marketplace
+claude plugin marketplace add https://github.com/whchoi98/aws-skills-for-claude-code
+
+# Install the plugin
+claude plugin install aws-skills-for-claude-code@aws-skills-for-claude-code
+```
+
+This activates **40 skills**, **3 slash commands** (`/review`, `/test-all`, `/deploy`), **2 agents** (code-reviewer, security-auditor), and **security hooks** automatically.
+
+### Option B: Local Plugin Install
+
+```bash
 git clone https://github.com/whchoi98/aws-skills-for-claude-code.git
 claude plugins add ./aws-skills-for-claude-code
-
-# Verify: 40 skills, 3 commands, 2 agents available
 ```
 
-### Legacy Install (Skills Only)
+Same as Option A, but installs from a local directory.
+
+### Option C: Legacy Install (Skills Only)
 
 ```bash
-# Clone the repository
 git clone https://github.com/whchoi98/aws-skills-for-claude-code.git
 cd aws-skills-for-claude-code
-
-# Install 36 upstream skills to ~/.claude/skills/
 bash install-claude-code.sh
-
-# Verify installation (should output 36)
-ls -d ~/.claude/skills/*/ | wc -l
 ```
+
+Copies 36 upstream skills to `~/.claude/skills/`. Does not include commands, agents, or hooks.
 
 ## Usage
 
@@ -253,29 +260,36 @@ AWS Skills for Claude Code는 [Claude Code](https://docs.anthropic.com/en/docs/c
 
 ## 설치 방법
 
-### 플러그인으로 설치 (권장)
+### 옵션 A: 마켓플레이스 설치 (권장)
 
 ```bash
-# 클론 후 Claude Code 플러그인으로 설치
+# 마켓플레이스 추가
+claude plugin marketplace add https://github.com/whchoi98/aws-skills-for-claude-code
+
+# 플러그인 설치
+claude plugin install aws-skills-for-claude-code@aws-skills-for-claude-code
+```
+
+**40개 스킬**, **3개 슬래시 커맨드** (`/review`, `/test-all`, `/deploy`), **2개 에이전트** (code-reviewer, security-auditor), **보안 훅**이 자동 활성화됩니다.
+
+### 옵션 B: 로컬 플러그인 설치
+
+```bash
 git clone https://github.com/whchoi98/aws-skills-for-claude-code.git
 claude plugins add ./aws-skills-for-claude-code
-
-# 확인: 40개 스킬, 3개 커맨드, 2개 에이전트 사용 가능
 ```
 
-### 레거시 설치 (스킬만)
+옵션 A와 동일하지만 로컬 디렉토리에서 설치합니다.
+
+### 옵션 C: 레거시 설치 (스킬만)
 
 ```bash
-# 리포지토리 클론
 git clone https://github.com/whchoi98/aws-skills-for-claude-code.git
 cd aws-skills-for-claude-code
-
-# 36개 업스트림 스킬을 ~/.claude/skills/에 설치
 bash install-claude-code.sh
-
-# 설치 확인 (36이 출력되어야 함)
-ls -d ~/.claude/skills/*/ | wc -l
 ```
+
+36개 업스트림 스킬을 `~/.claude/skills/`에 복사합니다. 커맨드, 에이전트, 훅은 포함되지 않습니다.
 
 ## 사용법
 

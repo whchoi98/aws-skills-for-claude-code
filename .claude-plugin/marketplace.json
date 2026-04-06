@@ -1,0 +1,25 @@
+{
+  "name": "aws-skills-for-claude-code",
+  "owner": {
+    "name": "whchoi98",
+    "email": ""
+  },
+  "metadata": {
+    "description": "40 on-demand AWS and cloud skills, slash commands, agents, and security hooks for Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "aws-skills-for-claude-code",
+      "source": ".",
+      "description": "40 on-demand AWS and cloud skills, slash commands, agents, and security hooks for Claude Code",
+      "version": "1.3.0",
+      "author": {
+        "name": "whchoi98"
+      },
+      "license": "MIT",
+      "keywords": ["aws", "cloud", "skills", "terraform", "cdk", "serverless", "security", "migration"],
+      "category": "cloud"
+    }
+  ]
+}

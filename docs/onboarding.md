@@ -15,10 +15,14 @@
 git clone https://github.com/whchoi98/aws-skills-for-claude-code.git
 cd aws-skills-for-claude-code
 
-# Option A: Install as plugin (recommended — 40 skills + commands + agents + hooks)
+# Option A: Marketplace install (recommended)
+claude plugin marketplace add https://github.com/whchoi98/aws-skills-for-claude-code
+claude plugin install aws-skills-for-claude-code@aws-skills-for-claude-code
+
+# Option B: Local plugin install (40 skills + commands + agents + hooks)
 claude plugins add ./aws-skills-for-claude-code
 
-# Option B: Legacy install (skills only — 36 upstream skills)
+# Option C: Legacy install (skills only — 36 upstream skills)
 bash scripts/setup.sh
 bash install-claude-code.sh
 ```

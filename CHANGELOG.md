@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Independent marketplace** -- `.claude-plugin/marketplace.json` for `/plugin marketplace add` installation
+- Marketplace install instructions in README (EN/KR)
+
 ## [1.3.0] - 2026-04-06
 
 ### Added
@@ -101,6 +106,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)을 따릅니다.
 
 ## [Unreleased]
+
+### Added
+
+- **독립 마켓플레이스** -- `.claude-plugin/marketplace.json`으로 `/plugin marketplace add` 설치 지원
+- README에 마켓플레이스 설치 안내 추가 (EN/KR)
 
 ## [1.3.0] - 2026-04-06
 
