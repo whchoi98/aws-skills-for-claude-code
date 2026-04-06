@@ -1,3 +1,7 @@
+---
+description: Use when synchronizing project documentation with current code state. Quality scoring and gap analysis for CLAUDE.md files.
+---
+
 # Sync Docs Skill
 
 Synchronize project documentation with current code state.

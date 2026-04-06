@@ -2,33 +2,44 @@
 
 ## Overview
 
-AWS Skills for Claude Code — Claude Code 사용자가 AWS 환경에서 개발과 배포를 효율적으로 수행할 수 있도록 36개 스킬을 제공하는 배포 프로젝트.
+AWS Skills for Claude Code — Claude Code 사용자가 AWS 환경에서 개발과 배포를 효율적으로 수행할 수 있도록 40개 스킬을 제공하는 Claude Code 플러그인.
 
 ## Tech Stack
 
 - **Shell**: Bash (macOS / Linux 호환)
-- **Spec**: Agent Skills (agentskills.io)
-- **Format**: YAML frontmatter + Markdown (SKILL.md)
+- **Spec**: Agent Skills (agentskills.io), Claude Code Plugin
+- **Format**: YAML frontmatter + Markdown (SKILL.md, commands, agents)
 
 ## Project Structure
 
 ```
+.claude-plugin/        - 플러그인 매니페스트 (plugin.json)
 .kiro/skills/          - 36개 스킬 원본 보관 (업스트림 동기화)
 .kiro/agents/          - Kiro 에이전트 설정 (powers.json)
 .claude/hooks/         - Claude Code 훅 스크립트 (doc-sync, secret-scan, session-context, notify)
-.claude/skills/        - 프로젝트 스킬 (code-review, refactor, release, sync-docs)
+.claude/skills/        - 프로젝트 스킬 4개 (code-review, refactor, release, sync-docs)
 .claude/commands/      - 슬래시 커맨드 (/review, /test-all, /deploy)
-.claude/agents/        - 에이전트 정의 (code-reviewer, security-auditor)
+.claude/agents/        - 에이전트 정의 YML (개발용)
+agents/                - 플러그인 에이전트 MD (code-reviewer, security-auditor)
+hooks/                 - 플러그인 훅 설정 (hooks.json)
 docs/                  - 아키텍처 문서, ADR, 런북, 온보딩
 scripts/               - 운영 스크립트 (setup.sh, install-hooks.sh)
 tests/                 - TAP 형식 테스트 스위트 (hooks, structure, fixtures)
 tools/                 - 스크립트, 프롬프트 (예약 — 현재 비어 있음)
-install-claude-code.sh - ~/.claude/skills/로 스킬 설치
+install-claude-code.sh - ~/.claude/skills/로 스킬 설치 (레거시)
 install-skills.sh      - 업스트림에서 스킬 다운로드
 ```
 
 ## Architecture
 
+### Plugin Install (권장)
+```
+git clone → claude plugins add ./aws-skills-for-claude-code
+  → plugin.json이 .kiro/skills/ + .claude/skills/ + commands/ + agents/ + hooks/ 자동 발견
+  → 40개 스킬 + 3개 커맨드 + 2개 에이전트 + 2개 훅 활성화
+```
+
+### Legacy Install (스킬만)
 ```
 upstream (Powers, MCP Tool Forge)
   ↓ install-skills.sh (다운로드)
@@ -38,7 +49,7 @@ upstream (Powers, MCP Tool Forge)
 ```
 
 - `.kiro/skills/`는 업스트림 원본의 보관 디렉토리 (수정 최소화)
-- `install-claude-code.sh`가 `~/.claude/skills/`로 복사하여 Claude Code에서 온디맨드 로딩
+- `plugin.json`이 `.kiro/skills/`와 `.claude/skills/`를 커스텀 경로로 참조 (중복 복사 없음)
 - Skills는 YAML frontmatter(`description`)로 키워드 기반 자동 활성화
 
 ## Skill Sources
@@ -124,12 +135,14 @@ bash install-claude-code.sh && ls ~/.claude/skills/ | wc -l
 
 | File | Purpose |
 |------|---------|
-| `install-claude-code.sh` | Installs skills to `~/.claude/skills/` |
+| `.claude-plugin/plugin.json` | Plugin manifest (name, version, component paths) |
+| `install-claude-code.sh` | Legacy installer (copies to `~/.claude/skills/`) |
 | `install-skills.sh` | Downloads skills from upstream repos |
-| `.kiro/skills/` | All 36 skill directories |
+| `.kiro/skills/` | All 36 upstream skill directories |
 | `.kiro/agents/powers.json` | Kiro agent configuration |
-| `.claude/settings.json` | Claude Code hooks and permissions |
-| `.claude/agents/*.yml` | Agent definitions (code-reviewer, security-auditor) |
+| `.claude/settings.json` | Claude Code hooks and permissions (dev) |
+| `agents/*.md` | Plugin agent definitions (code-reviewer, security-auditor) |
+| `hooks/hooks.json` | Plugin hook configuration (PreCommit, Notification) |
 | `scripts/setup.sh` | One-command project setup |
 | `scripts/install-hooks.sh` | Git hooks installer |
 | `tests/run-all.sh` | TAP-format test runner (76 assertions) |

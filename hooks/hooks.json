@@ -1,0 +1,24 @@
+{
+  "SessionStart": [
+    {
+      "matcher": "",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash $CLAUDE_PLUGIN_ROOT/.claude/hooks/session-context.sh 2>/dev/null || true"
+        }
+      ]
+    }
+  ],
+  "Notification": [
+    {
+      "matcher": "",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash $CLAUDE_PLUGIN_ROOT/.claude/hooks/notify.sh \"$EVENT\" \"$MESSAGE\" 2>/dev/null || true"
+        }
+      ]
+    }
+  ]
+}

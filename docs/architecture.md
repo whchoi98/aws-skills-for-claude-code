@@ -11,14 +11,21 @@
 
 ## System Overview
 
-AWS Skills for Claude Code는 업스트림 스킬 리포지토리에서 SKILL.md 파일을 수집하고, Claude Code 사용자의 `~/.claude/skills/`에 설치하는 배포 파이프라인입니다.
-Bash 스크립트 기반으로 외부 의존성 없이 동작하며, 36개 AWS 관련 스킬을 제공합니다.
-핵심 데이터 흐름: 업스트림 → 로컬 아카이브 → Claude Code 스킬 디렉토리.
+AWS Skills for Claude Code는 업스트림 스킬 리포지토리에서 SKILL.md 파일을 수집하고, Claude Code 플러그인으로 제공하는 배포 시스템입니다.
+Bash 스크립트 기반으로 외부 의존성 없이 동작하며, 40개 스킬(36개 업스트림 + 4개 프로젝트)과 슬래시 커맨드, 에이전트, 보안 훅을 포함합니다.
+핵심 배포 방식: `claude plugins add`로 플러그인 설치 → 모든 컴포넌트 자동 발견.
 
 ## Components
 
+### Plugin Layer
+- **.claude-plugin/plugin.json** -- 플러그인 매니페스트. 이름, 버전, 커스텀 컴포넌트 경로 정의.
+- **agents/*.md** -- 플러그인 에이전트 정의 (code-reviewer, security-auditor). Markdown 형식.
+- **hooks/hooks.json** -- 플러그인 훅 설정. `$CLAUDE_PLUGIN_ROOT`로 스크립트 경로 참조.
+- **.claude/commands/*.md** -- 슬래시 커맨드 (`/review`, `/test-all`, `/deploy`). plugin.json에서 커스텀 경로로 참조.
+- **.claude/skills/** -- 4개 프로젝트 스킬 (code-review, refactor, release, sync-docs). plugin.json에서 커스텀 경로로 참조.
+
 ### Ingestion Layer
-- **.kiro/skills/** -- 36개 스킬 원본 아카이브. 업스트림과 동기화를 위해 최소한의 변경만 유지.
+- **.kiro/skills/** -- 36개 스킬 원본 아카이브. 업스트림과 동기화를 위해 최소한의 변경만 유지. plugin.json에서 커스텀 경로로 참조.
 - **install-skills.sh** -- 업스트림 리포지토리에서 SKILL.md를 heredoc 방식으로 다운로드.
 
 ### Distribution Layer
@@ -124,14 +131,21 @@ Upstream repos → install-skills.sh → .kiro/skills/ → install-claude-code.s
 
 ## System Overview
 
-AWS Skills for Claude Code is a distribution pipeline that collects SKILL.md files from upstream skill repositories and installs them to Claude Code users' `~/.claude/skills/` directory.
-It operates purely on Bash scripts with no external dependencies, providing 36 AWS-related skills.
-Core data flow: upstream → local archive → Claude Code skills directory.
+AWS Skills for Claude Code is a Claude Code plugin that collects SKILL.md files from upstream skill repositories and provides them as a unified plugin package.
+It operates purely on Bash scripts with no external dependencies, providing 40 skills (36 upstream + 4 project), slash commands, agents, and security hooks.
+Core deployment: `claude plugins add` installs the plugin → all components auto-discovered.
 
 ## Components
 
+### Plugin Layer
+- **.claude-plugin/plugin.json** -- Plugin manifest. Defines name, version, and custom component paths.
+- **agents/*.md** -- Plugin agent definitions (code-reviewer, security-auditor). Markdown format.
+- **hooks/hooks.json** -- Plugin hook configuration. References scripts via `$CLAUDE_PLUGIN_ROOT`.
+- **.claude/commands/*.md** -- Slash commands (`/review`, `/test-all`, `/deploy`). Referenced as custom path in plugin.json.
+- **.claude/skills/** -- 4 project skills (code-review, refactor, release, sync-docs). Referenced as custom path in plugin.json.
+
 ### Ingestion Layer
-- **.kiro/skills/** -- Archive of 36 skill originals. Minimal changes to maintain upstream sync.
+- **.kiro/skills/** -- Archive of 36 skill originals. Minimal changes to maintain upstream sync. Referenced as custom path in plugin.json.
 - **install-skills.sh** -- Downloads SKILL.md from upstream repositories via heredoc embedding.
 
 ### Distribution Layer

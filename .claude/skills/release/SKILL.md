@@ -1,3 +1,7 @@
+---
+description: Use when creating a new release with semantic versioning, changelog updates, and git tagging.
+---
+
 # Release Skill
 
 Automate the release process with validation checks.

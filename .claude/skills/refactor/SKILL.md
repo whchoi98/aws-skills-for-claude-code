@@ -1,3 +1,7 @@
+---
+description: Use when refactoring code to improve structure, reduce duplication, and apply SRP/DRY principles without changing behavior.
+---
+
 # Refactor Skill
 
 Refactor existing code to improve quality without changing behavior.

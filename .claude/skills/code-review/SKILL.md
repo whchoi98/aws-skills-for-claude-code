@@ -1,3 +1,7 @@
+---
+description: Use when reviewing code changes for bugs, security issues, and quality. Confidence-based scoring filters false positives.
+---
+
 # Code Review Skill
 
 Review changed code with confidence-based scoring to filter false positives.

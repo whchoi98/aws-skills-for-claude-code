@@ -1,8 +1,8 @@
 # AWS Skills for Claude Code
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Version](https://img.shields.io/badge/version-1.2.0-green.svg)](CHANGELOG.md) [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey.svg)]() [![English](https://img.shields.io/badge/lang-English-blue.svg)](#english) [![한국어](https://img.shields.io/badge/lang-한국어-red.svg)](#한국어)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Version](https://img.shields.io/badge/version-1.3.0-green.svg)](CHANGELOG.md) [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey.svg)]() [![English](https://img.shields.io/badge/lang-English-blue.svg)](#english) [![한국어](https://img.shields.io/badge/lang-한국어-red.svg)](#한국어)
 
-A curated collection of 36 on-demand AWS and cloud skills for Claude Code / Claude Code를 위한 36개 온디맨드 AWS/클라우드 스킬 모음
+A Claude Code plugin with 40 on-demand AWS and cloud skills / 40개 온디맨드 AWS/클라우드 스킬을 제공하는 Claude Code 플러그인
 
 ---
 
@@ -10,17 +10,18 @@ A curated collection of 36 on-demand AWS and cloud skills for Claude Code / Clau
 
 ## Overview
 
-AWS Skills for Claude Code is a distribution project that provides 36 on-demand skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Each skill loads automatically when relevant keywords appear in conversation, keeping context usage minimal.
+AWS Skills for Claude Code is a Claude Code plugin that provides 40 on-demand skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Each skill loads automatically when relevant keywords appear in conversation, keeping context usage minimal.
 
-Skills are sourced from two upstream repositories and installed to `~/.claude/skills/` via a single shell script with zero external dependencies.
+The plugin includes 36 upstream skills from two repositories plus 4 development workflow skills, along with slash commands, agents, and security hooks.
 
 ## Features
 
+- **Claude Code Plugin** — Install once, get 40 skills + 3 commands + 2 agents + security hooks
 - **On-demand loading** — YAML frontmatter enables keyword-triggered activation instead of always-on context consumption
-- **36 skills** — AWS services, external services (Stripe, Datadog, Figma, etc.), migration tools, and development workflows
-- **One-command install** — Single shell script copies all skills to `~/.claude/skills/` with no external dependencies
+- **40 skills** — AWS services, external services (Stripe, Datadog, Figma, etc.), migration tools, and development workflows
+- **Slash commands** — `/review`, `/test-all`, `/deploy` for common workflows
+- **Security hooks** — Pre-commit secret scanning and webhook notifications
 - **Cross-platform** — macOS and Linux support with POSIX-compatible Bash scripts
-- **Customizable** — Global install at `~/.claude/skills/` with per-project override via `.claude/skills/`
 
 ## Prerequisites
 
@@ -30,12 +31,24 @@ Skills are sourced from two upstream repositories and installed to `~/.claude/sk
 
 ## Installation
 
+### As a Plugin (Recommended)
+
+```bash
+# Clone and install as Claude Code plugin
+git clone https://github.com/whchoi98/aws-skills-for-claude-code.git
+claude plugins add ./aws-skills-for-claude-code
+
+# Verify: 40 skills, 3 commands, 2 agents available
+```
+
+### Legacy Install (Skills Only)
+
 ```bash
 # Clone the repository
 git clone https://github.com/whchoi98/aws-skills-for-claude-code.git
 cd aws-skills-for-claude-code
 
-# Install all 36 skills to ~/.claude/skills/
+# Install 36 upstream skills to ~/.claude/skills/
 bash install-claude-code.sh
 
 # Verify installation (should output 36)
@@ -144,20 +157,25 @@ Create a skill with the same name in `.claude/skills/` to override the global ve
 
 ```
 aws-skills-for-claude-code/
+├── .claude-plugin/
+│   └── plugin.json            # Plugin manifest (name, version, component paths)
 ├── CLAUDE.md                  # Claude Code project configuration
 ├── README.md                  # Documentation (bilingual)
 ├── CHANGELOG.md               # Version history
 ├── LICENSE                    # MIT license
-├── install-claude-code.sh     # Claude Code skill installer (macOS/Linux)
+├── install-claude-code.sh     # Legacy skill installer (macOS/Linux)
 ├── install-skills.sh          # Upstream skill downloader
 ├── .kiro/
-│   ├── skills/                # 36 skill originals (upstream archive)
+│   ├── skills/                # 36 upstream skills (auto-discovered by plugin)
 │   └── agents/                # Kiro agent configuration
 ├── .claude/
-│   ├── hooks/                 # Claude Code hooks (doc-sync, secret-scan, etc.)
-│   ├── skills/                # Project skills (code-review, refactor, etc.)
-│   ├── commands/              # Slash commands (/review, /test-all, /deploy)
-│   └── agents/                # Agent definitions (code-reviewer, security-auditor)
+│   ├── hooks/                 # Hook scripts (secret-scan, doc-sync, etc.)
+│   ├── skills/                # 4 project skills (auto-discovered by plugin)
+│   ├── commands/              # Slash commands (auto-discovered by plugin)
+│   └── agents/                # Agent definitions (YAML, for dev)
+├── agents/                    # Plugin agents (Markdown, auto-discovered)
+├── hooks/
+│   └── hooks.json             # Plugin hook configuration
 ├── docs/
 │   ├── architecture.md        # Bilingual architecture document
 │   ├── onboarding.md          # Developer onboarding guide
@@ -214,17 +232,18 @@ The MIT license applies to the project's own code (installation scripts, hooks, 
 
 ## 개요
 
-AWS Skills for Claude Code는 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)를 위한 36개 온디맨드 스킬을 제공하는 배포 프로젝트입니다. 대화에서 관련 키워드가 나타나면 해당 스킬이 자동으로 로드되어 컨텍스트 사용을 최소화합니다.
+AWS Skills for Claude Code는 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)를 위한 40개 온디맨드 스킬을 제공하는 Claude Code 플러그인입니다. 대화에서 관련 키워드가 나타나면 해당 스킬이 자동으로 로드되어 컨텍스트 사용을 최소화합니다.
 
-두 업스트림 리포지토리에서 수집한 스킬을 단일 셸 스크립트로 `~/.claude/skills/`에 설치하며, 외부 의존성이 없습니다.
+36개 업스트림 스킬과 4개 개발 워크플로우 스킬, 슬래시 커맨드, 에이전트, 보안 훅을 포함합니다.
 
 ## 주요 기능
 
+- **Claude Code 플러그인** — 한 번 설치로 40개 스킬 + 3개 커맨드 + 2개 에이전트 + 보안 훅 활성화
 - **온디맨드 로딩** — YAML frontmatter를 통해 키워드 기반으로 활성화되며, 항상 로드되지 않아 컨텍스트를 절약합니다
-- **36개 스킬** — AWS 서비스, 외부 서비스(Stripe, Datadog, Figma 등), 마이그레이션 도구, 개발 워크플로우를 포함합니다
-- **원커맨드 설치** — 단일 셸 스크립트로 모든 스킬을 `~/.claude/skills/`에 복사하며, 외부 의존성이 없습니다
+- **40개 스킬** — AWS 서비스, 외부 서비스(Stripe, Datadog, Figma 등), 마이그레이션 도구, 개발 워크플로우를 포함합니다
+- **슬래시 커맨드** — `/review`, `/test-all`, `/deploy`로 일반적인 워크플로우 실행
+- **보안 훅** — 커밋 전 시크릿 스캔 및 웹훅 알림
 - **크로스 플랫폼** — POSIX 호환 Bash 스크립트로 macOS와 Linux를 지원합니다
-- **커스터마이즈 가능** — `~/.claude/skills/` 글로벌 설치 위에 `.claude/skills/`로 프로젝트별 오버라이드가 가능합니다
 
 ## 사전 요구 사항
 
@@ -234,12 +253,24 @@ AWS Skills for Claude Code는 [Claude Code](https://docs.anthropic.com/en/docs/c
 
 ## 설치 방법
 
+### 플러그인으로 설치 (권장)
+
+```bash
+# 클론 후 Claude Code 플러그인으로 설치
+git clone https://github.com/whchoi98/aws-skills-for-claude-code.git
+claude plugins add ./aws-skills-for-claude-code
+
+# 확인: 40개 스킬, 3개 커맨드, 2개 에이전트 사용 가능
+```
+
+### 레거시 설치 (스킬만)
+
 ```bash
 # 리포지토리 클론
 git clone https://github.com/whchoi98/aws-skills-for-claude-code.git
 cd aws-skills-for-claude-code
 
-# 36개 스킬을 ~/.claude/skills/에 설치
+# 36개 업스트림 스킬을 ~/.claude/skills/에 설치
 bash install-claude-code.sh
 
 # 설치 확인 (36이 출력되어야 함)
@@ -348,20 +379,25 @@ ls -d ~/.claude/skills/*/ | wc -l
 
 ```
 aws-skills-for-claude-code/
+├── .claude-plugin/
+│   └── plugin.json            # 플러그인 매니페스트 (이름, 버전, 컴포넌트 경로)
 ├── CLAUDE.md                  # Claude Code 프로젝트 설정
 ├── README.md                  # 문서 (이중 언어)
 ├── CHANGELOG.md               # 버전 이력
 ├── LICENSE                    # MIT 라이선스
-├── install-claude-code.sh     # Claude Code 스킬 설치 스크립트 (macOS/Linux)
+├── install-claude-code.sh     # 레거시 스킬 설치 스크립트 (macOS/Linux)
 ├── install-skills.sh          # 업스트림 스킬 다운로더
 ├── .kiro/
-│   ├── skills/                # 36개 스킬 원본 (업스트림 아카이브)
+│   ├── skills/                # 36개 업스트림 스킬 (플러그인 자동 발견)
 │   └── agents/                # Kiro 에이전트 설정
 ├── .claude/
-│   ├── hooks/                 # Claude Code 훅 (doc-sync, secret-scan 등)
-│   ├── skills/                # 프로젝트 스킬 (code-review, refactor 등)
-│   ├── commands/              # 슬래시 커맨드 (/review, /test-all, /deploy)
-│   └── agents/                # 에이전트 정의 (code-reviewer, security-auditor)
+│   ├── hooks/                 # 훅 스크립트 (secret-scan, doc-sync 등)
+│   ├── skills/                # 4개 프로젝트 스킬 (플러그인 자동 발견)
+│   ├── commands/              # 슬래시 커맨드 (플러그인 자동 발견)
+│   └── agents/                # 에이전트 정의 (YAML, 개발용)
+├── agents/                    # 플러그인 에이전트 (Markdown, 자동 발견)
+├── hooks/
+│   └── hooks.json             # 플러그인 훅 설정
 ├── docs/
 │   ├── architecture.md        # 이중 언어 아키텍처 문서
 │   ├── onboarding.md          # 개발자 온보딩 가이드
