@@ -1,0 +1,8 @@
+# False positive samples — these should NOT be detected
+AKIA_PATTERN_DOC
+password = ""
+secret: ""
+api_key = "short"
+xoxb-not-a-token
+ghp_tooshort
+sk-tooshort

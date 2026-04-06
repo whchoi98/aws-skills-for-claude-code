@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [],
-    "deny": []
+    "deny": [
+      "rm -rf /",
+      "rm -rf ~",
+      "rm -rf .",
+      "git push --force origin main",
+      "git push --force origin master",
+      "git reset --hard",
+      "git clean -fdx"
+    ]
   },
   "hooks": {
     "SessionStart": [
