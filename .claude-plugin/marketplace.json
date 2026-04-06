@@ -1,25 +1,26 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "aws-skills-for-claude-code",
+  "description": "40 on-demand AWS and cloud skills, slash commands, agents, and security hooks for Claude Code",
   "owner": {
     "name": "whchoi98",
-    "email": ""
-  },
-  "metadata": {
-    "description": "40 on-demand AWS and cloud skills, slash commands, agents, and security hooks for Claude Code",
-    "version": "1.0.0"
+    "email": "whchoi98@gmail.com"
   },
   "plugins": [
     {
       "name": "aws-skills-for-claude-code",
-      "source": ".",
       "description": "40 on-demand AWS and cloud skills, slash commands, agents, and security hooks for Claude Code",
       "version": "1.3.0",
       "author": {
-        "name": "whchoi98"
+        "name": "whchoi98",
+        "email": "whchoi98@gmail.com"
       },
-      "license": "MIT",
-      "keywords": ["aws", "cloud", "skills", "terraform", "cdk", "serverless", "security", "migration"],
-      "category": "cloud"
+      "source": {
+        "source": "url",
+        "url": "https://github.com/whchoi98/aws-skills-for-claude-code.git"
+      },
+      "category": "cloud",
+      "homepage": "https://github.com/whchoi98/aws-skills-for-claude-code"
     }
   ]
 }
