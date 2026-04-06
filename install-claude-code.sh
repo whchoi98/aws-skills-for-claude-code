@@ -7,7 +7,7 @@ set -euo pipefail
 # Usage: bash install-claude-code.sh
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-KIRO_SKILLS_DIR="${SCRIPT_DIR}/.kiro/skills"
+KIRO_SKILLS_DIR="${SCRIPT_DIR}/skills"
 CLAUDE_SKILLS_DIR="${HOME}/.claude/skills"
 
 if [ ! -d "${KIRO_SKILLS_DIR}" ]; then

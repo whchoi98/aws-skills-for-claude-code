@@ -12,10 +12,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-04-06
+
 ### Added
 
-- **Independent marketplace** -- `.claude-plugin/marketplace.json` for `/plugin marketplace add` installation
+- **Independent marketplace** -- `.claude-plugin/marketplace.json` for `claude plugin marketplace add` installation
 - Marketplace install instructions in README (EN/KR)
+
+### Changed
+
+- **Standard plugin layout** -- Moved skills from `.kiro/skills/` + `.claude/skills/` to `skills/`, commands from `.claude/commands/` to `commands/`
+- Removed custom path fields from `plugin.json` (auto-discovery only)
+- Corrected skill count from 40 to 36 (4 project skills overlapped with upstream)
+- Updated all documentation, tests, hooks, and scripts to use new paths
 
 ## [1.3.0] - 2026-04-06
 
@@ -41,11 +50,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Upgrade from skill distribution project to Claude Code plugin (40 skills, 3 commands, 2 agents, 2 hooks)
+- Upgrade from skill distribution project to Claude Code plugin (36 skills, 3 commands, 2 agents, 2 hooks)
 - `plugin.json` references `.kiro/skills/` and `.claude/skills/` via custom paths (no file duplication)
 - Rewrite README.md with plugin installation instructions (bilingual)
 - Rewrite `docs/architecture.md` with Plugin Layer and updated system overview (bilingual)
-- Update CLAUDE.md with plugin architecture, 40 skills, and expanded key files
+- Update CLAUDE.md with plugin architecture, 36 skills, and expanded key files
 - Update `.claude/settings.json` with all 4 hook events and deny list
 
 ## [1.2.0] - 2026-04-04
@@ -91,7 +100,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 16 skills from [kirodotdev/powers](https://github.com/kirodotdev/powers): aws-agentcore, aws-amplify, aws-healthomics, aws-iac, aws-sam, cloud-architect, cloudwatch-appsignals, saas-builder, strands, datadog, dynatrace, figma, neon, postman, stripe, terraform
 - 11 skills from [whchoi98/kiro-cli-power](https://github.com/whchoi98/kiro-cli-power): aws-cloudwatch, aws-cost, aws-data, aws-iam, aws-infra, aws-messaging, aws-security, code-review, refactor, release, sync-docs
 
-[Unreleased]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.0.0...v1.1.0
@@ -107,10 +117,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-04-06
+
 ### Added
 
-- **독립 마켓플레이스** -- `.claude-plugin/marketplace.json`으로 `/plugin marketplace add` 설치 지원
+- **독립 마켓플레이스** -- `.claude-plugin/marketplace.json`으로 `claude plugin marketplace add` 설치 지원
 - README에 마켓플레이스 설치 안내 추가 (EN/KR)
+
+### Changed
+
+- **표준 플러그인 레이아웃** -- 스킬을 `.kiro/skills/` + `.claude/skills/`에서 `skills/`로, 커맨드를 `.claude/commands/`에서 `commands/`로 이동
+- `plugin.json`에서 커스텀 경로 필드 제거 (auto-discovery만 사용)
+- 스킬 수 40개에서 36개로 정정 (프로젝트 스킬 4개가 업스트림과 중복)
+- 모든 문서, 테스트, 훅, 스크립트의 경로 참조 업데이트
 
 ## [1.3.0] - 2026-04-06
 
@@ -136,11 +155,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- 스킬 배포 프로젝트에서 Claude Code 플러그인으로 전환 (40개 스킬, 3개 커맨드, 2개 에이전트, 2개 훅)
+- 스킬 배포 프로젝트에서 Claude Code 플러그인으로 전환 (36개 스킬, 3개 커맨드, 2개 에이전트, 2개 훅)
 - `plugin.json`이 `.kiro/skills/`와 `.claude/skills/`를 커스텀 경로로 참조 (파일 중복 없음)
 - README.md에 플러그인 설치 방법 추가 (이중 언어)
 - `docs/architecture.md`에 Plugin Layer 추가 및 시스템 개요 업데이트 (이중 언어)
-- CLAUDE.md에 플러그인 아키텍처, 40개 스킬, 확장된 Key Files 반영
+- CLAUDE.md에 플러그인 아키텍처, 36개 스킬, 확장된 Key Files 반영
 - `.claude/settings.json`에 4개 훅 이벤트 및 위험 명령어 차단 목록 추가
 
 ## [1.2.0] - 2026-04-04
@@ -186,7 +205,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [kirodotdev/powers](https://github.com/kirodotdev/powers) 기반 16개 스킬: aws-agentcore, aws-amplify, aws-healthomics, aws-iac, aws-sam, cloud-architect, cloudwatch-appsignals, saas-builder, strands, datadog, dynatrace, figma, neon, postman, stripe, terraform
 - [whchoi98/kiro-cli-power](https://github.com/whchoi98/kiro-cli-power) 기반 11개 스킬: aws-cloudwatch, aws-cost, aws-data, aws-iam, aws-infra, aws-messaging, aws-security, code-review, refactor, release, sync-docs
 
-[Unreleased]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.0.0...v1.1.0

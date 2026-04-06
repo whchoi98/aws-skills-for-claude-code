@@ -13,23 +13,24 @@ assert_file_exists ".env.example" ".env.example exists"
 
 # Directory structure
 assert_dir_exists ".claude/hooks" ".claude/hooks/ directory exists"
-assert_dir_exists ".claude/skills" ".claude/skills/ directory exists"
-assert_dir_exists ".claude/commands" ".claude/commands/ directory exists"
+assert_dir_exists "skills" "skills/ directory exists"
+assert_dir_exists "commands" "commands/ directory exists"
+assert_dir_exists "agents" "agents/ directory exists"
 assert_dir_exists ".claude/agents" ".claude/agents/ directory exists"
 assert_dir_exists "docs/decisions" "docs/decisions/ directory exists"
 assert_dir_exists "docs/runbooks" "docs/runbooks/ directory exists"
 assert_dir_exists "scripts" "scripts/ directory exists"
 
 # Skills have SKILL.md
-for skill_dir in .claude/skills/*/; do
+for skill_dir in skills/*/; do
     name=$(basename "$skill_dir")
     assert_file_exists "$skill_dir/SKILL.md" "Skill $name has SKILL.md"
 done
 
 # Commands exist
-assert_file_exists ".claude/commands/review.md" "review command exists"
-assert_file_exists ".claude/commands/test-all.md" "test-all command exists"
-assert_file_exists ".claude/commands/deploy.md" "deploy command exists"
+assert_file_exists "commands/review.md" "review command exists"
+assert_file_exists "commands/test-all.md" "test-all command exists"
+assert_file_exists "commands/deploy.md" "deploy command exists"
 
 # Agents exist
 assert_file_exists ".claude/agents/code-reviewer.yml" "code-reviewer agent exists"
@@ -54,15 +55,15 @@ assert_contains "CLAUDE.md" "Conventions" "CLAUDE.md has Conventions section"
 assert_contains "CLAUDE.md" "Key Commands" "CLAUDE.md has Key Commands section"
 assert_contains "CLAUDE.md" "Auto-Sync Rules" "CLAUDE.md has Auto-Sync Rules section"
 
-# .kiro/skills has upstream skills
-UPSTREAM_COUNT=$(find .kiro/skills -maxdepth 1 -mindepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
-[ "$UPSTREAM_COUNT" -ge 30 ] && pass "At least 30 upstream skills present ($UPSTREAM_COUNT)" || fail "Expected 30+ upstream skills, found $UPSTREAM_COUNT"
+# Skills count
+SKILL_COUNT=$(find skills -maxdepth 1 -mindepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+[ "$SKILL_COUNT" -ge 30 ] && pass "At least 30 skills present ($SKILL_COUNT)" || fail "Expected 30+ skills, found $SKILL_COUNT"
 
-# Each upstream skill has SKILL.md with description
+# Each skill has SKILL.md with description
 MISSING_DESC=0
-for dir in .kiro/skills/*/; do
+for dir in skills/*/; do
     if ! head -3 "$dir/SKILL.md" 2>/dev/null | grep -q 'description:'; then
         MISSING_DESC=$((MISSING_DESC + 1))
     fi
 done
-[ "$MISSING_DESC" -eq 0 ] && pass "All upstream skills have description in SKILL.md" || fail "$MISSING_DESC upstream skills missing description"
+[ "$MISSING_DESC" -eq 0 ] && pass "All skills have description in SKILL.md" || fail "$MISSING_DESC skills missing description"

@@ -18,7 +18,7 @@ Synchronize local skill archive with upstream repositories (Powers, MCP Tool For
 ### 1. Check Current State
 ```bash
 # Count current skills
-ls -d .kiro/skills/*/ | wc -l
+ls -d skills/*/ | wc -l
 
 # Check last sync date
 git log --oneline -1 -- install-skills.sh
@@ -33,10 +33,10 @@ bash install-skills.sh
 ### 3. Verify Changes
 ```bash
 # Check what changed
-git diff --stat .kiro/skills/
+git diff --stat skills/
 
 # Review any new skills
-git diff --name-only --diff-filter=A .kiro/skills/
+git diff --name-only --diff-filter=A skills/
 ```
 
 ### 4. Fix Name Field Mismatches
@@ -58,12 +58,12 @@ bash install-claude-code.sh
 
 ### 7. Commit
 ```bash
-git add .kiro/skills/ install-skills.sh README.md CHANGELOG.md
+git add skills/ install-skills.sh README.md CHANGELOG.md
 git commit -m "feat: sync upstream skills (N total)"
 ```
 
 ## Verification
-- [ ] `ls .kiro/skills/*/ | wc -l` matches expected count
+- [ ] `ls skills/*/ | wc -l` matches expected count
 - [ ] All SKILL.md files have `description:` in frontmatter
 - [ ] README skill count matches actual count
 - [ ] `bash install-claude-code.sh` completes without errors
@@ -71,7 +71,7 @@ git commit -m "feat: sync upstream skills (N total)"
 ## Rollback
 ```bash
 # Revert to previous state
-git checkout HEAD -- .kiro/skills/ install-skills.sh
+git checkout HEAD -- skills/ install-skills.sh
 ```
 
 ## Notes

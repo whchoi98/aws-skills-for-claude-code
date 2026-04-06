@@ -1,7 +1,7 @@
 {
   "name": "aws-skills-for-claude-code",
-  "version": "1.3.0",
-  "description": "40 on-demand AWS and cloud skills, slash commands, agents, and security hooks for Claude Code",
+  "version": "1.4.0",
+  "description": "36 on-demand AWS and cloud skills, slash commands, agents, and security hooks for Claude Code",
   "author": {
     "name": "whchoi98",
     "url": "https://github.com/whchoi98"
@@ -18,9 +18,5 @@
     "serverless",
     "security",
     "migration"
-  ],
-  "commands": "./.claude/commands",
-  "agents": "./agents",
-  "skills": ["./.kiro/skills", "./.claude/skills"],
-  "hooks": "./hooks/hooks.json"
+  ]
 }

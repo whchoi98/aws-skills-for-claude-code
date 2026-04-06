@@ -24,7 +24,7 @@ SOFTWARE.
 
 Note: This license applies to the project's own code (installation scripts,
 hooks, documentation, and configuration files). Individual skills in
-.kiro/skills/ follow their respective upstream licenses:
+skills/ follow their respective upstream licenses:
 
 - Powers-based skills: See https://github.com/kirodotdev/powers
 - MCP Tool Forge skills: See https://github.com/whchoi98/kiro-cli-power

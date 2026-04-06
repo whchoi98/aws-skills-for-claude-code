@@ -11,8 +11,8 @@ command -v git >/dev/null 2>&1 || { echo "ERROR: git is required"; exit 1; }
 command -v bash >/dev/null 2>&1 || { echo "ERROR: bash is required"; exit 1; }
 
 # Verify skill sources exist
-SKILL_COUNT=$(find .kiro/skills -maxdepth 1 -mindepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
-echo "Found $SKILL_COUNT skills in .kiro/skills/"
+SKILL_COUNT=$(find skills -maxdepth 1 -mindepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+echo "Found $SKILL_COUNT skills in skills/"
 
 # Setup environment
 if [ -f ".env.example" ] && [ ! -f ".env" ]; then

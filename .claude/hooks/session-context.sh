@@ -8,7 +8,7 @@ echo "=== Project Context ==="
 echo "Project: aws-skills-for-claude-code (Bash/Shell)"
 
 # Skill count
-SKILL_COUNT=$(find .kiro/skills -maxdepth 1 -mindepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+SKILL_COUNT=$(find skills -maxdepth 1 -mindepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
 echo "Skills: $SKILL_COUNT"
 
 # Recent activity
