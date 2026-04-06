@@ -118,7 +118,7 @@ bash install-claude-code.sh && ls ~/.claude/skills/ | wc -l
 | Command | Description |
 |---------|-------------|
 | `/review` | Confidence-based code review on current changes |
-| `/test-all` | Validate all 36 skills and project integrity |
+| `/test-all` | Validate all 40 skills and project integrity |
 | `/deploy` | Install skills to `~/.claude/skills/` |
 
 ## Hooks
@@ -142,10 +142,10 @@ bash install-claude-code.sh && ls ~/.claude/skills/ | wc -l
 | `.kiro/agents/powers.json` | Kiro agent configuration |
 | `.claude/settings.json` | Claude Code hooks and permissions (dev) |
 | `agents/*.md` | Plugin agent definitions (code-reviewer, security-auditor) |
-| `hooks/hooks.json` | Plugin hook configuration (PreCommit, Notification) |
+| `hooks/hooks.json` | Plugin hook configuration (SessionStart, Notification) |
 | `scripts/setup.sh` | One-command project setup |
 | `scripts/install-hooks.sh` | Git hooks installer |
-| `tests/run-all.sh` | TAP-format test runner (76 assertions) |
+| `tests/run-all.sh` | TAP-format test runner (99 assertions) |
 | `docs/architecture.md` | Bilingual architecture document |
 | `docs/onboarding.md` | Developer onboarding guide |
 

@@ -12,8 +12,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-04-06
+
 ### Added
 
+- **Claude Code plugin support** -- `.claude-plugin/plugin.json` manifest with zero-duplication architecture
+- Plugin agents: `agents/code-reviewer.md`, `agents/security-auditor.md` (Markdown format)
+- Plugin hooks: `hooks/hooks.json` (SessionStart, Notification) with `$CLAUDE_PLUGIN_ROOT` paths
+- TAP-format test suite: 99 assertions across hooks, secret patterns, project structure, and plugin structure
+- Dangerous command deny list in `.claude/settings.json` (rm -rf, git push --force, git reset --hard, etc.)
+- YAML frontmatter `description` to 4 project skills for plugin auto-discovery
+- Module CLAUDE.md files for `tests/` and `scripts/` directories
+- ADR-003: Plugin architecture with zero-duplication design
 - Claude Code hooks: secret scanning (PreCommit), session context loading (SessionStart), webhook notifications (Notification)
 - Slash commands: `/review`, `/test-all`, `/deploy`
 - Agent definitions: `code-reviewer`, `security-auditor`
@@ -23,16 +33,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT LICENSE file with upstream license references
 - Project setup script (`scripts/setup.sh`) and Git hooks installer (`scripts/install-hooks.sh`)
 - Configuration files: `.editorconfig`, `.env.example`, `.mcp.json`
-- Verification section in CLAUDE.md with skill validation commands
 
 ### Changed
 
-- Rewrite README.md following bilingual best practices with standard section order
-- Rewrite `docs/architecture.md` in bilingual format with ASCII diagrams and layer-based components
-- Update CLAUDE.md with full project structure, slash commands, hooks table, and expanded key files
-- Update `.claude/settings.json` with all 4 hook events (SessionStart, PreCommit, PostToolUse, Notification)
-- Update `.gitignore` with `.env` and `.env.local` patterns
-- Update `.kiro/skills/CLAUDE.md` with add-skill workflow and validation script
+- Upgrade from skill distribution project to Claude Code plugin (40 skills, 3 commands, 2 agents, 2 hooks)
+- `plugin.json` references `.kiro/skills/` and `.claude/skills/` via custom paths (no file duplication)
+- Rewrite README.md with plugin installation instructions (bilingual)
+- Rewrite `docs/architecture.md` with Plugin Layer and updated system overview (bilingual)
+- Update CLAUDE.md with plugin architecture, 40 skills, and expanded key files
+- Update `.claude/settings.json` with all 4 hook events and deny list
 
 ## [1.2.0] - 2026-04-04
 
@@ -77,7 +86,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 16 skills from [kirodotdev/powers](https://github.com/kirodotdev/powers): aws-agentcore, aws-amplify, aws-healthomics, aws-iac, aws-sam, cloud-architect, cloudwatch-appsignals, saas-builder, strands, datadog, dynatrace, figma, neon, postman, stripe, terraform
 - 11 skills from [whchoi98/kiro-cli-power](https://github.com/whchoi98/kiro-cli-power): aws-cloudwatch, aws-cost, aws-data, aws-iam, aws-infra, aws-messaging, aws-security, code-review, refactor, release, sync-docs
 
-[Unreleased]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/whchoi98/aws-skills-for-claude-code/releases/tag/v1.0.0
@@ -92,27 +102,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-04-06
+
 ### Added
 
+- **Claude Code 플러그인 지원** -- `.claude-plugin/plugin.json` 매니페스트 (제로 중복 아키텍처)
+- 플러그인 에이전트: `agents/code-reviewer.md`, `agents/security-auditor.md` (Markdown 형식)
+- 플러그인 훅: `hooks/hooks.json` (SessionStart, Notification) `$CLAUDE_PLUGIN_ROOT` 경로 사용
+- TAP 형식 테스트 스위트: 99개 어설션 (훅, 시크릿 패턴, 프로젝트 구조, 플러그인 구조)
+- 위험 명령어 차단 목록 추가 (rm -rf, git push --force, git reset --hard 등)
+- 4개 프로젝트 스킬에 YAML frontmatter `description` 추가 (플러그인 자동 발견용)
+- `tests/` 및 `scripts/` 디렉토리 모듈 CLAUDE.md 추가
+- ADR-003: 제로 중복 플러그인 아키텍처
 - Claude Code 훅 추가: 시크릿 스캔(PreCommit), 세션 컨텍스트 로딩(SessionStart), 웹훅 알림(Notification)
 - 슬래시 커맨드 추가: `/review`, `/test-all`, `/deploy`
 - 에이전트 정의 추가: `code-reviewer`, `security-auditor`
 - 개발자 온보딩 가이드 추가 (`docs/onboarding.md`)
-- 아키텍처 결정 기록 추가: ADR-001 (heredoc 스킬 내장), ADR-002 (2단계 설치 파이프라인)
+- 아키텍처 결정 기록: ADR-001 (heredoc 스킬 내장), ADR-002 (2단계 설치 파이프라인)
 - 업스트림 동기화 런북 추가 (`docs/runbooks/upstream-sync.md`)
 - MIT LICENSE 파일 추가 (업스트림 라이선스 참조 포함)
 - 프로젝트 셋업 스크립트(`scripts/setup.sh`) 및 Git 훅 설치 스크립트(`scripts/install-hooks.sh`) 추가
 - 설정 파일 추가: `.editorconfig`, `.env.example`, `.mcp.json`
-- CLAUDE.md에 스킬 검증 명령어 포함 Verification 섹션 추가
 
 ### Changed
 
-- 이중 언어 모범 사례에 따라 README.md 전면 재작성 (표준 섹션 순서 적용)
-- `docs/architecture.md`를 이중 언어 형식으로 재작성 (ASCII 다이어그램 및 레이어별 컴포넌트 구성)
-- CLAUDE.md에 전체 프로젝트 구조, 슬래시 커맨드, 훅 테이블, 확장된 Key Files 반영
-- `.claude/settings.json`에 4개 훅 이벤트 등록 (SessionStart, PreCommit, PostToolUse, Notification)
-- `.gitignore`에 `.env` 및 `.env.local` 패턴 추가
-- `.kiro/skills/CLAUDE.md`에 스킬 추가 워크플로우 및 검증 스크립트 추가
+- 스킬 배포 프로젝트에서 Claude Code 플러그인으로 전환 (40개 스킬, 3개 커맨드, 2개 에이전트, 2개 훅)
+- `plugin.json`이 `.kiro/skills/`와 `.claude/skills/`를 커스텀 경로로 참조 (파일 중복 없음)
+- README.md에 플러그인 설치 방법 추가 (이중 언어)
+- `docs/architecture.md`에 Plugin Layer 추가 및 시스템 개요 업데이트 (이중 언어)
+- CLAUDE.md에 플러그인 아키텍처, 40개 스킬, 확장된 Key Files 반영
+- `.claude/settings.json`에 4개 훅 이벤트 및 위험 명령어 차단 목록 추가
 
 ## [1.2.0] - 2026-04-04
 
@@ -157,7 +176,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [kirodotdev/powers](https://github.com/kirodotdev/powers) 기반 16개 스킬: aws-agentcore, aws-amplify, aws-healthomics, aws-iac, aws-sam, cloud-architect, cloudwatch-appsignals, saas-builder, strands, datadog, dynatrace, figma, neon, postman, stripe, terraform
 - [whchoi98/kiro-cli-power](https://github.com/whchoi98/kiro-cli-power) 기반 11개 스킬: aws-cloudwatch, aws-cost, aws-data, aws-iam, aws-infra, aws-messaging, aws-security, code-review, refactor, release, sync-docs
 
-[Unreleased]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/whchoi98/aws-skills-for-claude-code/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/whchoi98/aws-skills-for-claude-code/releases/tag/v1.0.0
