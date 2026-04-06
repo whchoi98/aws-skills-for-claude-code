@@ -62,6 +62,32 @@ bash install-claude-code.sh
 
 Copies 36 upstream skills to `~/.claude/skills/`. Does not include commands, agents, or hooks.
 
+### Update
+
+```bash
+claude plugin marketplace update aws-skills-for-claude-code
+```
+
+### Uninstall
+
+```bash
+# Remove the plugin
+claude plugin uninstall aws-skills-for-claude-code
+
+# Remove the marketplace (optional)
+claude plugin marketplace remove aws-skills-for-claude-code
+```
+
+### Verify Installation
+
+```bash
+# List installed plugins
+claude plugin list
+
+# List configured marketplaces
+claude plugin marketplace list
+```
+
 ## Usage
 
 ```bash
@@ -290,6 +316,32 @@ bash install-claude-code.sh
 ```
 
 36개 업스트림 스킬을 `~/.claude/skills/`에 복사합니다. 커맨드, 에이전트, 훅은 포함되지 않습니다.
+
+### 업데이트
+
+```bash
+claude plugin marketplace update aws-skills-for-claude-code
+```
+
+### 삭제
+
+```bash
+# 플러그인 삭제
+claude plugin uninstall aws-skills-for-claude-code
+
+# 마켓플레이스 삭제 (선택)
+claude plugin marketplace remove aws-skills-for-claude-code
+```
+
+### 설치 확인
+
+```bash
+# 설치된 플러그인 목록
+claude plugin list
+
+# 등록된 마켓플레이스 목록
+claude plugin marketplace list
+```
 
 ## 사용법
 
